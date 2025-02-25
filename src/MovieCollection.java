@@ -325,7 +325,7 @@ public class MovieCollection
             System.out.println("" + choiceNum + ". " + allGenres.get(i));
         }
 
-        System.out.println("Which genre would you like to explore?");
+        System.out.println("Which genre do you want to choose?: ");
         System.out.print("Enter number: ");
 
         int choice = scanner.nextInt();
