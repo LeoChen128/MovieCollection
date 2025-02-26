@@ -41,18 +41,18 @@ public class MovieCollection
         allCastMembers = new ArrayList<>();
         allGenres = new ArrayList<>();
 
-        for (int i = 0; i < movies.size(); i++) {
-            String[] castMembers = movies.get(i).getCast().split("\\|");
-            for (int j = 0; j < castMembers.length; j++) {
-                String castMember = castMembers[j].trim(); // in case of a space
+        for (Movie movie : movies) {
+            String[] castMembers = movie.getCast().split("\\|");
+            for (String member : castMembers) {
+                String castMember = member.trim(); // in case of a space
                 if (!allCastMembers.contains(castMember)) {
                     allCastMembers.add(castMember);
                 }
             }
 
-            String[] movieGenres = movies.get(i).getGenres().split("\\|");
-            for (int j = 0; j < movieGenres.length; j++) {
-                String genre = movieGenres[j].trim();
+            String[] movieGenres = movie.getGenres().split("\\|");
+            for (String movieGenre : movieGenres) {
+                String genre = movieGenre.trim();
                 if (!allGenres.contains(genre)) {
                     allGenres.add(genre);
                 }
@@ -211,9 +211,9 @@ public class MovieCollection
         String searchTerm = scanner.nextLine().toLowerCase();
         ArrayList<String> results = new ArrayList<>();
 
-        for (int i = 0; i < allCastMembers.size(); i++) {
-            if (allCastMembers.get(i).toLowerCase().indexOf(searchTerm) != -1) {
-                results.add(allCastMembers.get(i));
+        for (String allCastMember : allCastMembers) {
+            if (allCastMember.toLowerCase().indexOf(searchTerm) != -1) {
+                results.add(allCastMember);
             }
         }
 
@@ -276,14 +276,12 @@ public class MovieCollection
 
         ArrayList<Movie> result = new ArrayList<Movie>();
 
-        for (int i = 0; i < movies.size(); i++)
-        {
-            String movieKeywords = movies.get(i).getKeywords();
+        for (Movie movie : movies) {
+            String movieKeywords = movie.getKeywords();
             movieKeywords = movieKeywords.toLowerCase();
 
-            if (movieKeywords.indexOf(searchTerm) != -1)
-            {
-                result.add(movies.get(i));
+            if (movieKeywords.indexOf(searchTerm) != -1) {
+                result.add(movie);
             }
         }
 
@@ -334,11 +332,11 @@ public class MovieCollection
         String selectedGenre = allGenres.get(choice - 1);
 
         ArrayList<Movie> genreMovies = new ArrayList<>();
-        for (int i = 0; i < movies.size(); i++) {
-            String[] movieGenres = movies.get(i).getGenres().split("\\|");
+        for (Movie movie : movies) {
+            String[] movieGenres = movie.getGenres().split("\\|");
             for (int j = 0; j < movieGenres.length; j++) {
                 if (movieGenres[j].trim().equals(selectedGenre)) {
-                    genreMovies.add(movies.get(i));
+                    genreMovies.add(movie);
                     j = movieGenres.length;
                 }
             }
@@ -368,8 +366,8 @@ public class MovieCollection
     private void listHighestRated()
     {
         ArrayList<Movie> ratedMovies = new ArrayList<>();
-        for (int i = 0; i < movies.size(); i++) {
-            ratedMovies.add(movies.get(i));
+        for (Movie value : movies) {
+            ratedMovies.add(value);
         }
 
         for (int i = 0; i < ratedMovies.size() - 1; i++) {
@@ -406,8 +404,8 @@ public class MovieCollection
     private void listHighestRevenue()
     {
         ArrayList<Movie> revenueMovies = new ArrayList<>();
-        for (int i = 0; i < movies.size(); i++) {
-            revenueMovies.add(movies.get(i));
+        for (Movie value : movies) {
+            revenueMovies.add(value);
         }
 
         for (int i = 0; i < revenueMovies.size() - 1; i++) {
