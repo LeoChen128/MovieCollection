@@ -211,9 +211,9 @@ public class MovieCollection
         String searchTerm = scanner.nextLine().toLowerCase();
         ArrayList<String> results = new ArrayList<>();
 
-        for (String allCastMember : allCastMembers) {
-            if (allCastMember.toLowerCase().indexOf(searchTerm) != -1) {
-                results.add(allCastMember);
+        for (String casts : allCastMembers) {
+            if (casts.toLowerCase().indexOf(searchTerm) != -1) {
+                results.add(casts);
             }
         }
 
@@ -227,8 +227,8 @@ public class MovieCollection
         sortStringList(results);
 
         for (int i = 0; i < results.size(); i++) {
-            int choiceNum = i + 1;
-            System.out.println("" + choiceNum + ". " + results.get(i));
+            int choice = i + 1;
+            System.out.println(choice + ". " + results.get(i));
         }
 
         System.out.println("Which cast member would you like to learn more about?");
@@ -347,7 +347,7 @@ public class MovieCollection
         System.out.println("\nMovies in genre: " + selectedGenre);
         for (int i = 0; i < genreMovies.size(); i++) {
             int choiceNum = i + 1;
-            System.out.println("" + choiceNum + ". " + genreMovies.get(i).getTitle());
+            System.out.println(choiceNum + ". " + genreMovies.get(i).getTitle());
         }
 
         System.out.println("Which movie would you like to learn more about?");
